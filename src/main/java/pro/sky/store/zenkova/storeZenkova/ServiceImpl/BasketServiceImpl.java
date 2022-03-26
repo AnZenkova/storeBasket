@@ -6,10 +6,7 @@ import pro.sky.store.zenkova.storeZenkova.Service.BasketService;
 import pro.sky.store.zenkova.storeZenkova.Service.StoreProductService;
 import pro.sky.store.zenkova.storeZenkova.data.Product;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Repository
@@ -26,7 +23,7 @@ public class BasketServiceImpl implements BasketService {
 
     public String addProductInBasket(Integer[] iD) {
         Set<Integer> collect = Arrays.stream(iD)
-                .filter(s -> s > 0)
+                .filter(s -> s > 0 && s < storeProductService.getProducts().size())
                 .collect(Collectors.toSet());
         for (int a : collect) {
             basket.add(storeProductService.getProducts().get(a));
@@ -35,7 +32,6 @@ public class BasketServiceImpl implements BasketService {
     }
 
     public List<Product> getProductInBasket() {
-        return basket.stream()
-                .collect(Collectors.toList());
+        return new ArrayList<>(basket);
     }
 }
