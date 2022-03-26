@@ -6,6 +6,7 @@ import pro.sky.store.zenkova.storeZenkova.Service.BasketService;
 import pro.sky.store.zenkova.storeZenkova.Service.StoreProductService;
 import pro.sky.store.zenkova.storeZenkova.data.Product;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -26,6 +27,9 @@ public class BasketServiceImpl implements BasketService {
 
     public String addProductInBasket(int[] iD) {
         for (int a : iD) {
+            if (a <= 0) {
+                throw new RuntimeException("Код продукта не может быть отрицательным или равен нулю");
+            }
             basket.add(storeProductService.getProducts().get(a));
         }
         return "Продукт(ы) добавлен(ы) в корзину!";

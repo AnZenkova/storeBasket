@@ -18,8 +18,8 @@ public class StoreProductServiceImpl implements StoreProductService {
             6, new Product("Морковь")
     ));
 
-    public Map<Integer, Product> getProducts() {
-            return store;
+    public List<Product> getProducts() {
+        return new ArrayList<>(store.values());
     }
 
 }

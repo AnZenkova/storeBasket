@@ -2,8 +2,8 @@ package pro.sky.store.zenkova.storeZenkova.Service;
 
 import pro.sky.store.zenkova.storeZenkova.data.Product;
 
-import java.util.Map;
+import java.util.List;
 
 public interface StoreProductService {
-    Map<Integer, Product> getProducts();
+    List<Product> getProducts();
 }
