@@ -22,14 +22,13 @@ public class BasketServiceImpl implements BasketService {
         this.storeProductService = storeProductService;
     }
 
-
     public Set<Product> basket = new HashSet<>();
 
-    public String addProductInBasket(int[] iD) {
-        for (int a : iD) {
-            if (a <= 0) {
-                throw new RuntimeException("Код продукта не может быть отрицательным или равен нулю");
-            }
+    public String addProductInBasket(Integer[] iD) {
+        Set<Integer> collect = Arrays.stream(iD)
+                .filter(s -> s > 0)
+                .collect(Collectors.toSet());
+        for (int a : collect) {
             basket.add(storeProductService.getProducts().get(a));
         }
         return "Продукт(ы) добавлен(ы) в корзину!";

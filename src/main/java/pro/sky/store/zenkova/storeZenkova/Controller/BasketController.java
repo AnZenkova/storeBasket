@@ -18,7 +18,7 @@ public class BasketController {
     }
 
     @RequestMapping("/add")
-    public String addProductInBasket(@RequestParam int[] iD) {
+    public String addProductInBasket(@RequestParam Integer[] iD) {
         return basketService.addProductInBasket(iD);
     }
 

@@ -5,6 +5,6 @@ import pro.sky.store.zenkova.storeZenkova.data.Product;
 import java.util.List;
 
 public interface BasketService {
-    public String addProductInBasket(int[] iD);
+    String addProductInBasket(Integer[] iD);
     List<Product> getProductInBasket();
 }
